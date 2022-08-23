@@ -1,0 +1,14 @@
+body {
+  background-color: #dff9fb;
+  font-family: "Merriweather", serif;
+}
+
+table {
+  font-size: 1.1rem;
+}
+
+#title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+}
