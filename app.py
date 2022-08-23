@@ -81,7 +81,7 @@ def update_product(id):
         quantity = request.form['CantCuotas']
         cursor.execute(f"UPDATE Cuotas SET producto='{product}', monto={price}, cuota={fee}, mes='{month}', cant_cuotas={quantity} WHERE id={id}")
         cursor.commit()
-        flash('Producto editado')
+        flash('Producto editado correctamente')
         return redirect(url_for('index'))
 
 
