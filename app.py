@@ -25,6 +25,10 @@ def get_paid():
     data = cursor.fetchall()
     for item in data:
         mes = item[4]+item[3]-1
+        if mes > 12 and mes <= 24:
+            mes = mes-12
+        elif mes > 24:
+            mes = mes-24
         item[4] = meses[mes]
     return data
 
@@ -97,7 +101,6 @@ def delete_product(id):
 def pay_product(id):
     cursor.execute(f"SELECT cant_cuotas-cuota +1 as cuota from cuotas where id={id}")
     item = cursor.fetchall()
-    print(item)
     if item[0][0] > 0:
         cursor.execute(f"UPDATE Cuotas SET Cuota = Cuota+1 WHERE id={id}")
         cursor.commit()
