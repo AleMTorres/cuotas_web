@@ -31,7 +31,7 @@ def get_paid():
 
 def get_products_paid():
     cursor.execute("SELECT * FROM Cuotas WHERE cant_cuotas-cuota +1 <= 0")
-    paid = cursor.fetchall()  # [(1015, 'Estufa', 2800, 4, 7, 3)]
+    paid = cursor.fetchall()
     for item in paid:
         if item[3] > item[5]:
             mes = item[4]+item[3]-2
@@ -53,7 +53,7 @@ def index():
 @app.route('/add', methods=['POST'])
 def add_product():
     if request.method == 'POST':
-        product = request.form['Producto']  # name del producto html
+        product = request.form['Producto']
         price = request.form['Monto']
         fee = request.form['Cuota']
         month = request.form['Mes']
@@ -94,7 +94,7 @@ def delete_product(id):
 
 
 @app.route('/pay/<string:id>')
-def pay_product(id):  # [(30, 'Estufa', 2800, 4, septiembre, 3)]
+def pay_product(id):
     cursor.execute(f"SELECT cant_cuotas-cuota +1 as cuota from cuotas where id={id}")
     item = cursor.fetchall()
     print(item)
